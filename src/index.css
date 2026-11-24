@@ -9,57 +9,68 @@
   }
 
   body {
-    background-color: #FBF8F2;
-    color: #2B170B;
+    background: linear-gradient(180deg, #F9F4EE 0%, #F5ECDF 40%, #EFE3D3 100%);
+    background-attachment: fixed;
+    color: #231207;
     overflow-x: hidden;
   }
 }
 
-/* Custom scrollbar matching warm chocolate tones */
+/* Luxury golden scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5EFEB;
+  background: #EFE5D5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C88A42;
-  border-radius: 4px;
+  background: linear-gradient(180deg, #C27C24, #8B4E1A);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4A2C17;
+  background: #4E2911;
 }
 
-/* Smooth card transitions and subtle badge texture */
-.kraft-card {
-  background: #FDFBF7;
-  border: 1px solid rgba(200, 138, 66, 0.18);
-  box-shadow: 0 4px 18px -2px rgba(61, 35, 20, 0.06);
+/* Golden luxury cards */
+.gold-card {
+  background: #FCF8F2;
+  border: 1px solid rgba(194, 124, 36, 0.28);
+  box-shadow: 0 6px 24px -4px rgba(56, 28, 11, 0.08);
 }
 
-.kraft-card:hover {
-  border-color: rgba(200, 138, 66, 0.4);
-  box-shadow: 0 10px 28px -4px rgba(61, 35, 20, 0.12);
+.gold-card:hover {
+  border-color: rgba(220, 162, 73, 0.6);
+  box-shadow: 0 14px 36px -4px rgba(56, 28, 11, 0.16), 0 0 20px rgba(220, 162, 73, 0.2);
 }
 
-/* Mobile reference pill navigation */
-.pill-tab {
-  transition: all 0.25s ease;
+/* Shimmer golden button animation */
+.gold-shimmer-btn {
+  background: linear-gradient(135deg, #231207 0%, #381C0B 50%, #4E2911 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-.pill-tab.active {
-  background-color: #3D2314;
-  color: #FFFFFF;
+.gold-shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.25), transparent);
+  transform: skewX(-20deg);
+  transition: 0.75s;
 }
 
-.pill-tab:not(.active) {
-  color: #3D2314;
+.gold-shimmer-btn:hover::after {
+  left: 150%;
 }
 
-.pill-tab:not(.active):hover {
-  background-color: rgba(200, 138, 66, 0.15);
+/* WhatsApp glowing pulsing button */
+.whatsapp-glow {
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 0 0 15px rgba(37, 211, 102, 0.25);
 }

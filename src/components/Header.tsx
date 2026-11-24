@@ -37,7 +37,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile drawer on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
@@ -57,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
     { name: 'Chocolate Specials', path: '/category/chocolate-specials' },
     { name: 'Gifting', path: '/gifting' },
     { name: 'About Us', path: '/about' },
-    { name: 'Contact Us', path: '/contact' },
+    { name: 'Contact', path: '/contact' },
     { name: 'FAQ', path: '/faq' },
   ];
 
@@ -71,46 +70,46 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
 
   return (
     <>
-      {/* Top Announcement Bar */}
-      <div className="bg-nojunk-dark text-amber-100/90 text-xs py-1.5 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2 border-b border-amber-900/30">
-        <Sparkles className="w-3.5 h-3.5 text-nojunk-caramel animate-pulse" />
-        <span>Homemade with Love • 100% Wholesome Ingredients • Only nuts.. nothing else!!</span>
-        <span className="hidden sm:inline text-nojunk-caramel">•</span>
+      {/* Top Luxury Announcement Bar */}
+      <div className="bg-gradient-to-r from-nojunk-dark via-nojunk-chocolate to-nojunk-dark text-amber-100/95 text-xs py-2 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2 border-b border-amber-500/20 shadow-xs">
+        <Sparkles className="w-3.5 h-3.5 text-nojunk-gold animate-pulse" />
+        <span className="font-serif">Homemade with Love • 100% Pure Nuts, Dates & Chocolate • Only nuts.. nothing else!!</span>
+        <span className="hidden sm:inline text-nojunk-gold">•</span>
         <a
           href={`https://wa.me/91${WHATSAPP_PHONE}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden sm:inline-flex items-center gap-1 text-nojunk-gold hover:underline"
+          className="hidden sm:inline-flex items-center gap-1.5 text-amber-300 font-bold hover:text-white transition-colors ml-1"
         >
-          <MessageCircle className="w-3 h-3" />
+          <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
           <span>WhatsApp: {WHATSAPP_PHONE}</span>
         </a>
       </div>
 
-      {/* Main Sticky Header */}
+      {/* Main Grand Header */}
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-nojunk-cream/95 backdrop-blur-md shadow-sm border-b border-nojunk-brown/10 py-2.5'
-            : 'bg-nojunk-cream py-3.5'
+            ? 'bg-[#FAF5EE]/95 backdrop-blur-md shadow-md border-b border-amber-900/15 py-2.5'
+            : 'bg-[#FAF5EE] py-3.5 border-b border-amber-900/10'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4">
-            {/* Brand Logo & Mascot */}
-            <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-              <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-nojunk-caramel/40 shadow-sm transition-transform duration-300 group-hover:scale-105">
+            {/* Prominent Large Logo (as requested in image copy 12.png) */}
+            <Link to="/" className="flex items-center gap-3 sm:gap-4 group shrink-0">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-3 border-nojunk-gold shadow-md bg-white transition-transform duration-300 group-hover:scale-105 p-0.5">
                 <img
                   src="/assets/nojunk-badge-round.png"
-                  alt="nojunk squirrel logo"
+                  alt="nojunk circular squirrel logo"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-script text-2xl sm:text-3xl font-bold text-nojunk-dark tracking-tight leading-none">
+                <span className="font-script text-3xl sm:text-4xl md:text-5xl font-bold text-nojunk-dark tracking-tight leading-none group-hover:text-nojunk-goldenBrown transition-colors">
                   nojunk
                 </span>
-                <span className="text-[10px] sm:text-xs text-nojunk-brown font-medium tracking-wide mt-0.5">
+                <span className="font-serif italic text-xs sm:text-sm text-nojunk-goldenBrown font-semibold tracking-wide mt-1">
                   only nuts..nothing else!!
                 </span>
               </div>
@@ -124,10 +123,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                    className={`px-3.5 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                       isActive
-                        ? 'bg-nojunk-dark text-white shadow-sm'
-                        : 'text-nojunk-dark hover:text-nojunk-caramel hover:bg-nojunk-parchment'
+                        ? 'bg-nojunk-dark text-amber-200 shadow-sm border border-amber-500/30'
+                        : 'text-nojunk-dark hover:text-nojunk-goldenBrown hover:bg-amber-100/60'
                     }`}
                   >
                     {link.name}
@@ -143,7 +142,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
                 type="button"
                 onClick={onOpenSearch}
                 aria-label="Search products"
-                className="p-2 text-nojunk-dark hover:text-nojunk-caramel hover:bg-nojunk-parchment rounded-full transition-colors"
+                className="p-2.5 text-nojunk-dark hover:text-nojunk-goldenBrown hover:bg-amber-100/60 rounded-full transition-colors border border-amber-900/10"
               >
                 <Search className="w-5 h-5" />
               </button>
@@ -152,11 +151,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
               <Link
                 to="/wishlist"
                 aria-label="Wishlist"
-                className="relative p-2 text-nojunk-dark hover:text-nojunk-caramel hover:bg-nojunk-parchment rounded-full transition-colors"
+                className="relative p-2.5 text-nojunk-dark hover:text-rose-600 hover:bg-amber-100/60 rounded-full transition-colors border border-amber-900/10"
               >
                 <Heart className="w-5 h-5" />
                 {wishlistIds.length > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-rose-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-scale">
+                  <span className="absolute -top-1 -right-1 bg-rose-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-scale">
                     {wishlistIds.length}
                   </span>
                 )}
@@ -166,12 +165,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
               <button
                 type="button"
                 onClick={() => setCartOpen(true)}
-                aria-label="Cart"
-                className="relative p-2 text-nojunk-dark hover:text-nojunk-caramel hover:bg-nojunk-parchment rounded-full transition-colors"
+                aria-label="Enquiry Basket"
+                className="relative p-2.5 text-nojunk-dark hover:text-nojunk-goldenBrown hover:bg-amber-100/60 rounded-full transition-colors border border-amber-900/10"
               >
                 <ShoppingBag className="w-5 h-5" />
                 {totalCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-nojunk-caramel text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-nojunk-goldenBrown text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                     {totalCount}
                   </span>
                 )}
@@ -182,16 +181,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
                 aria-label="Open navigation menu"
-                className="lg:hidden p-2 text-nojunk-dark hover:bg-nojunk-parchment rounded-full transition-colors ml-1"
+                className="lg:hidden p-2.5 text-nojunk-dark hover:bg-amber-100/60 rounded-full transition-colors border border-amber-900/10 ml-1"
               >
                 <Menu className="w-6 h-6" />
               </button>
             </div>
           </div>
 
-          {/* Mobile Reference Search Bar & Pill Tabs (As shown in reference mockup!) */}
-          <div className="lg:hidden mt-3 pt-2 border-t border-nojunk-brown/10">
-            {/* Search input mimicking the exact mobile reference */}
+          {/* Mobile Reference Search Bar & Pill Tabs */}
+          <div className="lg:hidden mt-3 pt-2.5 border-t border-amber-900/10">
             <form onSubmit={handleMobileSearchSubmit} className="relative">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-nojunk-brown/60" />
               <input
@@ -199,38 +197,37 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search nuts, dates, chocolate..."
-                className="w-full bg-nojunk-surface pl-10 pr-4 py-2 text-sm rounded-xl border border-nojunk-brown/20 focus:outline-none focus:border-nojunk-caramel focus:ring-1 focus:ring-nojunk-caramel/40 placeholder:text-nojunk-brown/50"
+                className="w-full bg-white pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-xl border border-amber-900/20 focus:outline-none focus:border-nojunk-caramel focus:ring-1 focus:ring-nojunk-caramel/40 placeholder:text-nojunk-brown/50 shadow-2xs"
               />
             </form>
 
-            {/* Pill navigation tabs [Home, Shop, About Us] as in the mobile mockup */}
             <div className="flex items-center justify-around gap-2 mt-2.5">
               <Link
                 to="/"
-                className={`flex-1 py-1.5 px-3 text-center text-xs font-semibold rounded-full transition-all duration-200 ${
+                className={`flex-1 py-1.5 px-3 text-center text-xs font-bold rounded-full transition-all duration-200 ${
                   currentTab === 'home'
-                    ? 'bg-nojunk-dark text-white shadow-sm'
-                    : 'bg-nojunk-surface text-nojunk-dark border border-nojunk-brown/15'
+                    ? 'bg-nojunk-dark text-amber-200 shadow-sm'
+                    : 'bg-white text-nojunk-dark border border-amber-900/15'
                 }`}
               >
                 Home
               </Link>
               <Link
                 to="/shop"
-                className={`flex-1 py-1.5 px-3 text-center text-xs font-semibold rounded-full transition-all duration-200 ${
+                className={`flex-1 py-1.5 px-3 text-center text-xs font-bold rounded-full transition-all duration-200 ${
                   currentTab === 'shop'
-                    ? 'bg-nojunk-dark text-white shadow-sm'
-                    : 'bg-nojunk-surface text-nojunk-dark border border-nojunk-brown/15'
+                    ? 'bg-nojunk-dark text-amber-200 shadow-sm'
+                    : 'bg-white text-nojunk-dark border border-amber-900/15'
                 }`}
               >
                 Shop
               </Link>
               <Link
                 to="/about"
-                className={`flex-1 py-1.5 px-3 text-center text-xs font-semibold rounded-full transition-all duration-200 ${
+                className={`flex-1 py-1.5 px-3 text-center text-xs font-bold rounded-full transition-all duration-200 ${
                   currentTab === 'about'
-                    ? 'bg-nojunk-dark text-white shadow-sm'
-                    : 'bg-nojunk-surface text-nojunk-dark border border-nojunk-brown/15'
+                    ? 'bg-nojunk-dark text-amber-200 shadow-sm'
+                    : 'bg-white text-nojunk-dark border border-amber-900/15'
                 }`}
               >
                 About Us
@@ -240,45 +237,44 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
         </div>
       </header>
 
-      {/* Mobile Drawer Backdrop */}
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm transition-opacity"
+          className="fixed inset-0 bg-black/60 z-50 backdrop-blur-xs transition-opacity"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
 
-      {/* Mobile Slide-in Drawer */}
       <aside
-        className={`fixed top-0 right-0 bottom-0 w-[82%] max-w-sm bg-nojunk-cream z-50 shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#FAF5EE] z-50 shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        {/* Drawer Header */}
-        <div className="p-5 border-b border-nojunk-brown/10 flex items-center justify-between bg-nojunk-parchment">
+        <div className="p-5 border-b border-amber-900/15 flex items-center justify-between bg-gradient-to-r from-amber-100/70 to-amber-50">
           <div className="flex items-center gap-3">
             <img
               src="/assets/nojunk-badge-round.png"
               alt="nojunk logo"
-              className="w-10 h-10 rounded-full border border-nojunk-caramel/40"
+              className="w-14 h-14 rounded-full border-2 border-nojunk-gold shadow-sm"
             />
             <div>
-              <h2 className="font-script text-2xl font-bold text-nojunk-dark leading-none">nojunk</h2>
-              <p className="text-[10px] text-nojunk-brown">Only nuts.. nothing else!!</p>
+              <h2 className="font-script text-3xl font-bold text-nojunk-dark leading-none">nojunk</h2>
+              <p className="font-serif italic text-[11px] text-nojunk-goldenBrown font-semibold mt-0.5">
+                Only nuts.. nothing else!!
+              </p>
             </div>
           </div>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Close menu"
-            className="p-1.5 text-nojunk-dark hover:bg-nojunk-brown/10 rounded-full"
+            className="p-1.5 text-nojunk-dark hover:bg-amber-200/50 rounded-full"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Drawer Navigation Links */}
-        <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+        <nav className="flex-1 overflow-y-auto p-4 space-y-1.5">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
             return (
@@ -286,10 +282,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                   isActive
-                    ? 'bg-nojunk-dark text-white shadow-sm font-semibold'
-                    : 'text-nojunk-dark hover:bg-nojunk-parchment'
+                    ? 'bg-nojunk-dark text-amber-200 shadow-sm'
+                    : 'text-nojunk-dark hover:bg-amber-100/60'
                 }`}
               >
                 <span>{link.name}</span>
@@ -298,38 +294,37 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
             );
           })}
 
-          <div className="pt-4 mt-4 border-t border-nojunk-brown/10 space-y-2">
+          <div className="pt-3 mt-3 border-t border-amber-900/15">
             <Link
               to="/gifting"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-3 px-4 py-3 bg-amber-50 rounded-xl text-nojunk-dark border border-amber-200/60 font-medium text-sm"
+              className="flex items-center gap-3 px-4 py-3 bg-amber-100/70 rounded-xl text-nojunk-dark border border-amber-300/60 font-semibold text-sm"
             >
-              <Gift className="w-5 h-5 text-nojunk-caramel" />
+              <Gift className="w-5 h-5 text-nojunk-goldenBrown" />
               <span>Occasion Gifting Collection</span>
             </Link>
           </div>
         </nav>
 
-        {/* Drawer Footer Contact */}
-        <div className="p-5 border-t border-nojunk-brown/10 bg-nojunk-parchment/60 space-y-3">
+        <div className="p-5 border-t border-amber-900/15 bg-gradient-to-b from-transparent to-amber-100/40 space-y-3">
           <div className="text-xs text-nojunk-brown">
-            <p className="font-semibold text-nojunk-dark">Founder & Curator: K. Neelima</p>
+            <p className="font-bold text-nojunk-dark">Founder & Curator: K. Neelima</p>
             <p>Homemade in small hygienic batches</p>
           </div>
           <a
             href={`https://wa.me/91${WHATSAPP_PHONE}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white py-2.5 px-4 rounded-xl font-semibold text-sm shadow-sm transition-transform active:scale-95"
+            className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white py-3 px-4 rounded-xl font-bold text-sm shadow-md transition-transform active:scale-95"
           >
             <MessageCircle className="w-4 h-4" />
             <span>Chat on WhatsApp</span>
           </a>
           <a
             href={`tel:${WHATSAPP_PHONE}`}
-            className="w-full flex items-center justify-center gap-2 bg-nojunk-surface hover:bg-nojunk-parchment text-nojunk-dark border border-nojunk-brown/20 py-2.5 px-4 rounded-xl font-medium text-sm transition-colors"
+            className="w-full flex items-center justify-center gap-2 bg-white hover:bg-amber-50 text-nojunk-dark border border-amber-900/20 py-2.5 px-4 rounded-xl font-semibold text-xs transition-colors"
           >
-            <Phone className="w-4 h-4 text-nojunk-caramel" />
+            <Phone className="w-4 h-4 text-nojunk-goldenBrown" />
             <span>Call: {WHATSAPP_PHONE}</span>
           </a>
         </div>

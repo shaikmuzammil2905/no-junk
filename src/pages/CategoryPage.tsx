@@ -2,11 +2,13 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CATEGORIES, PRODUCTS } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
-import { ArrowLeft, Sparkles, MessageCircle } from 'lucide-react';
-import { buildWhatsAppUrl, getGiftingEnquiryMessage } from '../utils/whatsapp';
+import { ArrowLeft, MessageCircle, Heart, ArrowRight, Sparkles } from 'lucide-react';
+import { useWishlist } from '../context/WishlistContext';
+import { buildWhatsAppUrl, getGiftingEnquiryMessage, getProductEnquiryMessage } from '../utils/whatsapp';
 
 export const CategoryPage: React.FC = () => {
   const { categorySlug } = useParams<{ categorySlug: string }>();
+  const { isInWishlist, toggleWishlist } = useWishlist();
 
   const category = CATEGORIES.find((c) => c.id === categorySlug);
   const categoryProducts = PRODUCTS.filter((p) => p.category === categorySlug);
@@ -33,65 +35,175 @@ export const CategoryPage: React.FC = () => {
     );
   }
 
+  // Use the banner from image copy 11.png for chocolate specials or rich category graphics
+  const bannerImage = category.id === 'chocolate-specials'
+    ? '/assets/category-banner-chocolate.png'
+    : category.id === 'gift-packs'
+      ? '/assets/cat-gift-packs-real.png'
+      : '/assets/cat-loose-nuts-real.png';
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
-      {/* Category Hero Banner */}
-      <div className="rounded-3xl bg-[#F6EFE6] border border-amber-900/15 p-6 sm:p-10 shadow-sm relative overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-          <div className="md:col-span-8 space-y-3">
-            <Link
-              to="/shop"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-nojunk-brown hover:text-nojunk-dark"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back to All Categories</span>
-            </Link>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-10">
+      {/* Grand Category Banner reproducing image copy 11.png */}
+      <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-500/35 bg-gradient-to-r from-[#FAF3EA] to-[#F5E7D4]">
+        {category.id === 'chocolate-specials' ? (
+          <div className="relative w-full aspect-[21/9] min-h-[360px] sm:min-h-[420px]">
+            <img
+              src="/assets/category-banner-chocolate.png"
+              alt="Chocolate Specials Grand Banner"
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Interactive overlay on top of banner */}
+            <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/80 via-black/45 sm:via-black/25 to-transparent flex flex-col justify-end sm:justify-center p-6 sm:p-10 lg:p-12 text-white max-w-xl space-y-3">
+              <div className="flex items-center gap-2 text-xs text-amber-200">
+                <Link to="/" className="hover:underline">Home</Link>
+                <span>&gt;</span>
+                <span className="font-bold text-white">{category.name}</span>
+              </div>
 
-            <h1 className="font-serif text-3xl sm:text-4xl font-bold text-nojunk-dark">
-              {category.name}
-            </h1>
+              <h1 className="font-serif text-3xl sm:text-5xl font-bold text-white drop-shadow-md">
+                {category.name}
+              </h1>
 
-            <p className="text-sm sm:text-base text-nojunk-dark/80 max-w-xl leading-relaxed">
-              {category.description}
-            </p>
+              <p className="font-serif italic text-amber-200 text-xs sm:text-base leading-relaxed drop-shadow">
+                {category.description}
+              </p>
 
-            <div className="pt-2">
-              <a
-                href={enquiryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition-transform active:scale-95"
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span>Enquire about {category.name} on WhatsApp</span>
-              </a>
+              <div className="pt-2">
+                <a
+                  href={enquiryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-md transition-transform active:scale-95"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Enquire on WhatsApp &rarr;</span>
+                </a>
+              </div>
             </div>
           </div>
+        ) : (
+          <div className="p-6 sm:p-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div className="md:col-span-8 space-y-3">
+              <div className="flex items-center gap-2 text-xs text-nojunk-goldenBrown font-semibold">
+                <Link to="/" className="hover:underline">Home</Link>
+                <span>&gt;</span>
+                <Link to="/shop" className="hover:underline">Shop</Link>
+                <span>&gt;</span>
+                <span className="text-nojunk-dark">{category.name}</span>
+              </div>
 
-          <div className="md:col-span-4 flex justify-center">
-            <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl bg-white p-3 border border-amber-900/10 shadow-soft flex items-center justify-center">
-              <img
-                src={category.image}
-                alt={category.name}
-                className="w-full h-full object-contain"
-              />
+              <h1 className="font-serif text-3xl sm:text-5xl font-bold text-nojunk-dark">
+                {category.name}
+              </h1>
+
+              <p className="text-sm sm:text-base text-nojunk-dark/85 max-w-xl leading-relaxed">
+                {category.description}
+              </p>
+
+              <div className="pt-2">
+                <a
+                  href={enquiryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-md transition-transform active:scale-95"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Enquire on WhatsApp &rarr;</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="md:col-span-4 flex justify-center">
+              <div className="w-44 h-44 sm:w-56 sm:h-56 rounded-3xl bg-white p-3 border-2 border-amber-500/30 shadow-md flex items-center justify-center overflow-hidden">
+                <img
+                  src={bannerImage}
+                  alt={category.name}
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
 
-      {/* Product Grid */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="font-serif text-xl sm:text-2xl font-bold text-nojunk-dark">
+      {/* Treats in this Category Section (Matching layout of image copy 11.png) */}
+      <div className="space-y-6">
+        <div className="flex items-center gap-2">
+          <span className="text-2xl">🌿</span>
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-nojunk-dark">
             Treats in this Category ({categoryProducts.length})
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categoryProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+        {/* Horizontal cards matching image copy 11.png */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categoryProducts.map((product) => {
+            const isFav = isInWishlist(product.id);
+            const whatsappMsg = getProductEnquiryMessage(product.name, product.selectedVariant, product.price);
+            const whatsappLink = buildWhatsAppUrl(whatsappMsg);
+
+            return (
+              <div
+                key={product.id}
+                className="bg-[#FCF8F2] rounded-3xl p-4 sm:p-5 border-2 border-amber-900/15 shadow-sm hover:shadow-card hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between relative group"
+              >
+                {/* Heart toggle */}
+                <button
+                  type="button"
+                  onClick={() => toggleWishlist(product.id)}
+                  aria-label="Wishlist toggle"
+                  className="absolute top-4 right-4 p-2 rounded-full bg-white/90 backdrop-blur-sm text-nojunk-brown hover:text-rose-600 transition-colors shadow-2xs z-10"
+                >
+                  <Heart className={`w-4 h-4 ${isFav ? 'fill-rose-500 text-rose-500' : ''}`} />
+                </button>
+
+                {/* Image */}
+                <Link
+                  to={`/product/${product.slug}`}
+                  className="w-full aspect-video sm:aspect-square rounded-2xl overflow-hidden bg-white mb-4 p-2 flex items-center justify-center border border-amber-900/10 group-hover:scale-[1.02] transition-transform duration-300"
+                >
+                  <img
+                    src={product.images[0]}
+                    alt={product.name}
+                    className="w-full h-full object-cover rounded-xl"
+                  />
+                </Link>
+
+                {/* Details */}
+                <div className="space-y-2">
+                  <Link to={`/product/${product.slug}`}>
+                    <h3 className="font-serif text-lg font-bold text-nojunk-dark group-hover:text-nojunk-goldenBrown transition-colors line-clamp-1">
+                      {product.name}
+                    </h3>
+                  </Link>
+
+                  <p className="text-xs text-nojunk-dark/75 line-clamp-2">
+                    {product.shortDescription}
+                  </p>
+
+                  <div className="pt-3 border-t border-amber-900/10 flex items-center justify-between gap-2">
+                    <Link
+                      to={`/product/${product.slug}`}
+                      className="inline-flex items-center gap-1.5 bg-nojunk-dark hover:bg-nojunk-chocolate text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-2xs"
+                    >
+                      <span>View Details &rarr;</span>
+                    </Link>
+
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-2xs transition-transform active:scale-95"
+                      title="Enquire on WhatsApp"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
