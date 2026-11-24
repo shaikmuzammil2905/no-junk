@@ -9,8 +9,14 @@
   }
 
   body {
-    background: linear-gradient(180deg, #F9F4EE 0%, #F5ECDF 40%, #EFE3D3 100%);
+    background-color: #F8F2E8;
+    background-image: 
+      radial-gradient(circle at 50% 20%, rgba(255, 245, 230, 0.88), rgba(245, 234, 218, 0.92)),
+      url('/assets/website-luxury-bg.png');
     background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #231207;
     overflow-x: hidden;
   }
@@ -47,30 +53,115 @@
   box-shadow: 0 14px 36px -4px rgba(56, 28, 11, 0.16), 0 0 20px rgba(220, 162, 73, 0.2);
 }
 
-/* Shimmer golden button animation */
-.gold-shimmer-btn {
-  background: linear-gradient(135deg, #231207 0%, #381C0B 50%, #4E2911 100%);
+/* Product Spotlight Banner Section */
+.product-spotlight-section {
+  width: 100%;
+  max-width: 1280px;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.spotlight-banner-wrapper {
   position: relative;
+  width: 100%;
+  border-radius: 24px;
   overflow: hidden;
+  box-shadow: 0 12px 35px rgba(45, 24, 10, 0.2);
+  border: 2px solid rgba(220, 162, 73, 0.35);
 }
 
-.gold-shimmer-btn::after {
-  content: '';
+.spotlight-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.banner-hotspot {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.25), transparent);
-  transform: skewX(-20deg);
-  transition: 0.75s;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.gold-shimmer-btn:hover::after {
-  left: 150%;
+.banner-hotspot:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
-/* WhatsApp glowing pulsing button */
-.whatsapp-glow {
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 0 0 15px rgba(37, 211, 102, 0.25);
+.hotspot-whatsapp {
+  left: 52.8%;
+  width: 21.6%;
+  top: 83.5%;
+  height: 8.5%;
+}
+
+.hotspot-details {
+  left: 75.8%;
+  width: 19%;
+  top: 83.5%;
+  height: 8.5%;
+}
+
+@media (max-width: 768px) {
+  .product-spotlight-section {
+    margin: 1.5rem auto;
+    padding: 0 0.75rem;
+  }
+
+  .spotlight-banner-wrapper {
+    border-radius: 16px;
+  }
+}
+
+/* Brand Promo Section */
+.nojunk-promo-section {
+  width: 100%;
+  max-width: 1280px;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.nojunk-promo-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(45, 24, 10, 0.14);
+  border: 2px solid rgba(220, 162, 73, 0.35);
+}
+
+.nojunk-promo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.nojunk-wp-hotspot {
+  position: absolute;
+  left: 36.5%;
+  width: 27%;
+  bottom: 13.5%;
+  height: 10.5%;
+  border-radius: 999px;
+  z-index: 10;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.nojunk-wp-hotspot:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .nojunk-promo-section {
+    margin: 1.5rem auto;
+    padding: 0 0.75rem;
+  }
+
+  .nojunk-promo-wrapper {
+    border-radius: 14px;
+  }
 }

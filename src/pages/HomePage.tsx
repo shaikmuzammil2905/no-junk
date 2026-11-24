@@ -8,11 +8,10 @@ import { WhyChooseUs } from '../components/WhyChooseUs';
 import { GiftingSection } from '../components/GiftingSection';
 import { FAQSection } from '../components/FAQSection';
 import { CATEGORIES, PRODUCTS } from '../data/products';
-import { ArrowRight, Sparkles, MessageCircle, Star, Heart, Phone, ShieldCheck, Clock } from 'lucide-react';
+import { ArrowRight, Sparkles, MessageCircle, Star, Heart, Phone } from 'lucide-react';
 import { WHATSAPP_PHONE, buildWhatsAppUrl } from '../utils/whatsapp';
 
 export const HomePage: React.FC = () => {
-  // Select top bestsellers
   const bestSellers = PRODUCTS.slice(0, 4);
 
   const directChatUrl = buildWhatsAppUrl(
@@ -73,42 +72,31 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. The Crown Jewel (Grand Featured Banner from image copy 14.png) */}
+      {/* 4. The Crown Jewel Spotlight (Zero Live Overlay with Clickable Hotspots) */}
       <FeaturedProduct />
 
-      {/* 5. Grand About Us Banner (Reproducing image copy 9.png with responsive WhatsApp Button) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-500/40 bg-gradient-to-r from-[#FAF3EA] to-[#F5E7D4]">
-          <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] min-h-[380px] sm:min-h-[460px]">
-            <img
-              src="/assets/about-grand-banner.png"
-              alt="nojunk squirrel emblem, luxury chocolate gifts, nuts, dates, and WhatsApp contact"
-              className="w-full h-full object-cover object-center"
-            />
-
-            {/* Interactive WhatsApp and call button overlaid on the banner */}
-            <div className="absolute inset-0 flex flex-col justify-end items-center pb-8 sm:pb-12 z-10">
-              <a
-                href={`https://wa.me/91${WHATSAPP_PHONE}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#2B1507] via-[#4A2610] to-[#2B1507] hover:from-[#3D200B] hover:to-[#3D200B] text-amber-200 border-2 border-amber-400/80 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-lg shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 group"
-              >
-                <Phone className="w-5 h-5 text-amber-400 group-hover:rotate-12 transition-transform" />
-                <MessageCircle className="w-5 h-5 text-emerald-400 animate-pulse" />
-                <span className="font-sans tracking-wide text-white font-extrabold">
-                  {WHATSAPP_PHONE}
-                </span>
-              </a>
-            </div>
-          </div>
+      {/* 5. Clean Brand Promo Banner (image copy 26.png exact specification) */}
+      <section className="nojunk-promo-section">
+        <div className="nojunk-promo-wrapper">
+          <img 
+            src="/assets/about-grand-banner.png" 
+            alt="nojunk - only nuts..nothing else!! Contact 9963290808" 
+            className="nojunk-promo-img"
+          />
+          <a 
+            href="https://wa.me/919963290808?text=Hi%20nojunk%2C%20I%20would%20like%20to%20place%20an%20order" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="nojunk-wp-hotspot"
+            aria-label="Chat on WhatsApp 9963290808"
+          />
         </div>
       </section>
 
-      {/* 6. Why Choose NOJUNK? (4 Premium Cards from image copy 15.png) */}
+      {/* 6. Why Choose NOJUNK? */}
       <WhyChooseUs />
 
-      {/* 7. Bespoke Gifting Experience (image copy 15.png) */}
+      {/* 7. Bespoke Gifting Experience */}
       <GiftingSection />
 
       {/* 8. Customer Love & Reviews Section */}

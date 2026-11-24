@@ -20,32 +20,23 @@ export const AboutPage: React.FC = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 space-y-12">
-      {/* Grand Visual Banner reproducing image copy 9.png with responsive WhatsApp Button */}
-      <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-500/40 bg-gradient-to-r from-[#FAF3EA] to-[#F5E7D4]">
-        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] min-h-[380px] sm:min-h-[460px]">
-          <img
-            src="/assets/about-grand-banner.png"
-            alt="nojunk squirrel emblem, luxury chocolate gifts, nuts, dates, and WhatsApp contact"
-            className="w-full h-full object-cover object-center"
+      {/* Clean Brand Promo Banner (image copy 26.png exact specification) */}
+      <section className="nojunk-promo-section">
+        <div className="nojunk-promo-wrapper">
+          <img 
+            src="/assets/about-grand-banner.png" 
+            alt="nojunk - only nuts..nothing else!! Contact 9963290808" 
+            className="nojunk-promo-img"
           />
-
-          {/* Interactive clickable WhatsApp button overlaid right on the banner's designated button location */}
-          <div className="absolute inset-0 flex flex-col justify-end items-center pb-8 sm:pb-12 z-10">
-            <a
-              href={`https://wa.me/91${WHATSAPP_PHONE}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#2B1507] via-[#4A2610] to-[#2B1507] hover:from-[#3D200B] hover:to-[#3D200B] text-amber-200 border-2 border-amber-400/80 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-lg shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 group"
-            >
-              <Phone className="w-5 h-5 text-amber-400 group-hover:rotate-12 transition-transform" />
-              <MessageCircle className="w-5 h-5 text-emerald-400 animate-pulse" />
-              <span className="font-sans tracking-wide text-white font-extrabold">
-                {WHATSAPP_PHONE}
-              </span>
-            </a>
-          </div>
+          <a 
+            href="https://wa.me/919963290808?text=Hi%20nojunk%2C%20I%20would%20like%20to%20place%20an%20order" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="nojunk-wp-hotspot"
+            aria-label="Chat on WhatsApp 9963290808"
+          />
         </div>
-      </div>
+      </section>
 
       {/* Our Story - Parchment Paper Style Card */}
       <div className="rounded-3xl bg-[#FCF8F2] border-2 border-amber-900/15 p-6 sm:p-12 shadow-sm relative">

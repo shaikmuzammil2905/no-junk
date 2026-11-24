@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CATEGORIES, PRODUCTS } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
-import { ArrowLeft, MessageCircle, Heart, ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowLeft, MessageCircle, Heart, Sparkles } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { buildWhatsAppUrl, getGiftingEnquiryMessage, getProductEnquiryMessage } from '../utils/whatsapp';
 
@@ -35,37 +35,42 @@ export const CategoryPage: React.FC = () => {
     );
   }
 
-  // Use the banner from image copy 11.png for chocolate specials or rich category graphics
-  const bannerImage = category.id === 'chocolate-specials'
-    ? '/assets/category-banner-chocolate.png'
+  // Use the clean background from image copy 30.png for chocolate specials
+  const isChocolate = category.id === 'chocolate-specials';
+  const cleanBgImage = isChocolate
+    ? '/assets/chocolate-specials-clean-bg.png'
     : category.id === 'gift-packs'
       ? '/assets/cat-gift-packs-real.png'
       : '/assets/cat-loose-nuts-real.png';
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-10">
-      {/* Grand Category Banner reproducing image copy 11.png */}
+      {/* Category Banner with Clean Background (Zero Text Clashing) */}
       <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-500/35 bg-gradient-to-r from-[#FAF3EA] to-[#F5E7D4]">
-        {category.id === 'chocolate-specials' ? (
-          <div className="relative w-full aspect-[21/9] min-h-[360px] sm:min-h-[420px]">
+        {isChocolate ? (
+          <div className="relative w-full aspect-[21/9] min-h-[340px] sm:min-h-[400px] flex items-center">
+            {/* Clean background image with no baked-in text */}
             <img
-              src="/assets/category-banner-chocolate.png"
-              alt="Chocolate Specials Grand Banner"
-              className="w-full h-full object-cover object-center"
+              src="/assets/chocolate-specials-clean-bg.png"
+              alt="Chocolate Specials"
+              className="absolute inset-0 w-full h-full object-cover object-right"
             />
-            {/* Interactive overlay on top of banner */}
-            <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/80 via-black/45 sm:via-black/25 to-transparent flex flex-col justify-end sm:justify-center p-6 sm:p-10 lg:p-12 text-white max-w-xl space-y-3">
-              <div className="flex items-center gap-2 text-xs text-amber-200">
+            {/* Soft gradient to keep left text crystal clear */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FAF4EC]/95 via-[#FAF4EC]/80 sm:via-[#FAF4EC]/50 to-transparent" />
+
+            {/* Live clean readable text & button */}
+            <div className="relative z-10 p-6 sm:p-10 lg:p-12 text-nojunk-dark max-w-xl space-y-3">
+              <div className="flex items-center gap-2 text-xs text-nojunk-goldenBrown font-bold">
                 <Link to="/" className="hover:underline">Home</Link>
                 <span>&gt;</span>
-                <span className="font-bold text-white">{category.name}</span>
+                <span className="text-nojunk-dark">{category.name}</span>
               </div>
 
-              <h1 className="font-serif text-3xl sm:text-5xl font-bold text-white drop-shadow-md">
+              <h1 className="font-serif text-3xl sm:text-5xl font-bold text-nojunk-dark drop-shadow-xs">
                 {category.name}
               </h1>
 
-              <p className="font-serif italic text-amber-200 text-xs sm:text-base leading-relaxed drop-shadow">
+              <p className="font-serif italic text-nojunk-goldenBrown text-sm sm:text-base leading-relaxed font-semibold">
                 {category.description}
               </p>
 
@@ -117,7 +122,7 @@ export const CategoryPage: React.FC = () => {
             <div className="md:col-span-4 flex justify-center">
               <div className="w-44 h-44 sm:w-56 sm:h-56 rounded-3xl bg-white p-3 border-2 border-amber-500/30 shadow-md flex items-center justify-center overflow-hidden">
                 <img
-                  src={bannerImage}
+                  src={cleanBgImage}
                   alt={category.name}
                   className="w-full h-full object-cover rounded-2xl"
                 />
@@ -127,7 +132,7 @@ export const CategoryPage: React.FC = () => {
         )}
       </div>
 
-      {/* Treats in this Category Section (Matching layout of image copy 11.png) */}
+      {/* Treats in this Category Section */}
       <div className="space-y-6">
         <div className="flex items-center gap-2">
           <span className="text-2xl">🌿</span>
@@ -136,7 +141,6 @@ export const CategoryPage: React.FC = () => {
           </h2>
         </div>
 
-        {/* Horizontal cards matching image copy 11.png */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categoryProducts.map((product) => {
             const isFav = isInWishlist(product.id);
@@ -148,7 +152,6 @@ export const CategoryPage: React.FC = () => {
                 key={product.id}
                 className="bg-[#FCF8F2] rounded-3xl p-4 sm:p-5 border-2 border-amber-900/15 shadow-sm hover:shadow-card hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between relative group"
               >
-                {/* Heart toggle */}
                 <button
                   type="button"
                   onClick={() => toggleWishlist(product.id)}
@@ -158,7 +161,6 @@ export const CategoryPage: React.FC = () => {
                   <Heart className={`w-4 h-4 ${isFav ? 'fill-rose-500 text-rose-500' : ''}`} />
                 </button>
 
-                {/* Image */}
                 <Link
                   to={`/product/${product.slug}`}
                   className="w-full aspect-video sm:aspect-square rounded-2xl overflow-hidden bg-white mb-4 p-2 flex items-center justify-center border border-amber-900/10 group-hover:scale-[1.02] transition-transform duration-300"
@@ -170,7 +172,6 @@ export const CategoryPage: React.FC = () => {
                   />
                 </Link>
 
-                {/* Details */}
                 <div className="space-y-2">
                   <Link to={`/product/${product.slug}`}>
                     <h3 className="font-serif text-lg font-bold text-nojunk-dark group-hover:text-nojunk-goldenBrown transition-colors line-clamp-1">
