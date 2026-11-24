@@ -188,7 +188,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
             </div>
           </div>
 
-          {/* Mobile Reference Search Bar & Pill Tabs */}
+          {/* Mobile Reference Search Bar */}
           <div className="lg:hidden mt-3 pt-2.5 border-t border-amber-900/10">
             <form onSubmit={handleMobileSearchSubmit} className="relative">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-nojunk-brown/60" />
@@ -200,39 +200,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
                 className="w-full bg-white pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-xl border border-amber-900/20 focus:outline-none focus:border-nojunk-caramel focus:ring-1 focus:ring-nojunk-caramel/40 placeholder:text-nojunk-brown/50 shadow-2xs"
               />
             </form>
-
-            <div className="flex items-center justify-around gap-2 mt-2.5">
-              <Link
-                to="/"
-                className={`flex-1 py-1.5 px-2 text-center text-[11px] sm:text-xs font-bold rounded-full whitespace-nowrap transition-all duration-200 ${
-                  currentTab === 'home'
-                    ? 'bg-nojunk-dark text-amber-200 shadow-sm'
-                    : 'bg-white text-nojunk-dark border border-amber-900/15'
-                }`}
-              >
-                Home
-              </Link>
-              <Link
-                to="/shop"
-                className={`flex-1 py-1.5 px-2 text-center text-[11px] sm:text-xs font-bold rounded-full whitespace-nowrap transition-all duration-200 ${
-                  currentTab === 'shop'
-                    ? 'bg-nojunk-dark text-amber-200 shadow-sm'
-                    : 'bg-white text-nojunk-dark border border-amber-900/15'
-                }`}
-              >
-                Shop
-              </Link>
-              <Link
-                to="/about"
-                className={`flex-1 py-1.5 px-2 text-center text-[11px] sm:text-xs font-bold rounded-full whitespace-nowrap transition-all duration-200 ${
-                  currentTab === 'about'
-                    ? 'bg-nojunk-dark text-amber-200 shadow-sm'
-                    : 'bg-white text-nojunk-dark border border-amber-900/15'
-                }`}
-              >
-                About Us
-              </Link>
-            </div>
           </div>
         </div>
       </header>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MessageCircle, Sparkles, ShieldCheck } from 'lucide-react';
-import { WHATSAPP_PHONE, buildWhatsAppUrl } from '../utils/whatsapp';
+import { ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
+import { buildWhatsAppUrl } from '../utils/whatsapp';
 
 export const HeroCarousel: React.FC = () => {
   const directWhatsappUrl = buildWhatsAppUrl(
@@ -9,12 +9,12 @@ export const HeroCarousel: React.FC = () => {
   );
 
   return (
-    <section className="relative overflow-hidden py-4 sm:py-8">
+    <section className="relative overflow-hidden py-2 sm:py-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Full-bleed Grand Bright Hero Banner (Using image copy 3.png) */}
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-400/40 bg-gradient-to-r from-[#FAF3EA] to-[#F5E7D4]">
-          {/* Main Bright Visual Image covering the whole Hero Section */}
-          <div className="relative w-full h-[450px] sm:h-[480px] lg:h-[520px] overflow-hidden">
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border sm:border-2 border-amber-400/40 bg-gradient-to-r from-[#FAF3EA] to-[#F5E7D4]">
+          {/* Main Bright Visual Image with reduced compact slider height */}
+          <div className="relative w-full h-[230px] sm:h-[340px] md:h-[400px] lg:h-[460px] overflow-hidden">
             <img
               src="/assets/hero-grand-bright.png"
               alt="nojunk hero squirrel eating chocolate treat with assorted dates, nuts and luxury gift box"
@@ -22,47 +22,54 @@ export const HeroCarousel: React.FC = () => {
             />
 
             {/* Gradient Overlay for Readable Typography and CTAs */}
-            <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/75 via-black/40 sm:via-black/25 to-transparent flex flex-col justify-end sm:justify-center p-6 sm:p-10 lg:p-14" />
+            <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/80 via-black/45 sm:via-black/30 to-transparent flex flex-col justify-end sm:justify-center p-3.5 sm:p-8 lg:p-12" />
 
             {/* Hero Content Overlay */}
-            <div className="absolute inset-0 flex flex-col justify-end sm:justify-center p-6 sm:p-10 lg:p-14 z-10 max-w-2xl space-y-3 sm:space-y-4 text-white">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-xs sm:text-sm font-bold text-amber-200 self-start shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+            <div className="absolute inset-0 flex flex-col justify-end sm:justify-center p-3.5 sm:p-8 lg:p-12 z-10 max-w-2xl space-y-1.5 sm:space-y-3.5 text-white">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-[10px] sm:text-xs font-bold text-amber-200 self-start shadow-sm">
+                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-300 animate-pulse" />
                 <span>Only nuts.. nothing else!!</span>
               </div>
 
-              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-md text-white">
+              <h1 className="font-serif text-lg sm:text-3xl lg:text-5xl font-bold leading-tight drop-shadow-md text-white">
                 Pure Homemade Luxury Treats
               </h1>
 
-              <p className="font-serif italic text-amber-200 text-sm sm:text-lg drop-shadow">
+              <p className="font-serif italic text-amber-200 text-xs sm:text-base drop-shadow line-clamp-1">
                 Wholesome ingredients. Indulgent treats. Beautiful gifts.
               </p>
 
-              <p className="text-xs sm:text-sm text-white/90 leading-relaxed max-w-lg hidden xs:block drop-shadow-sm">
+              <p className="text-xs sm:text-sm text-white/90 leading-relaxed max-w-lg hidden md:block drop-shadow-sm">
                 Plump king Medjool dates stuffed with roasted nuts, assorted chocolate gems, honey nut snack cups, and bespoke luxury gift boxes.
               </p>
 
               {/* Action Buttons */}
-              <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-3">
+              <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
                 <Link
                   to="/shop"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-nojunk-dark px-6 py-3 rounded-full font-bold text-xs sm:text-sm shadow-lg transition-transform active:scale-95 hover:shadow-gold-glow"
+                  className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-nojunk-dark px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-full font-bold text-[11px] sm:text-sm shadow-md transition-transform active:scale-95 hover:shadow-gold-glow"
                 >
                   <span>Explore Collection</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
 
                 <a
                   href={directWhatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-5 py-3 rounded-full font-bold text-xs sm:text-sm shadow-md transition-transform active:scale-95"
+                  className="inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20bd5a] text-white px-3 sm:px-4 sm:py-2.5 py-1.5 rounded-full font-bold text-[11px] sm:text-sm shadow-md transition-transform active:scale-95"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>Enquire on WhatsApp</span>
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>WhatsApp</span>
                 </a>
               </div>
+            </div>
+
+            {/* Reference Carousel Slider Indicator Dots */}
+            <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-20">
+              <span className="w-4 h-1.5 rounded-full bg-amber-400 shadow-xs" />
+              <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
+              <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
             </div>
           </div>
         </div>

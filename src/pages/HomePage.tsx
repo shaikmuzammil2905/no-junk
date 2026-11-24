@@ -23,33 +23,33 @@ export const HomePage: React.FC = () => {
       {/* 1. Grand Bright Hero Section (Using image copy 3.png) */}
       <HeroCarousel />
 
-      {/* 2. Shop by Category (Using real images copy 5, 6, 7) */}
+      {/* 2. Shop by Category (Using real images copy 5, 6, 7 side-by-side) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center gap-2 mb-6 sm:mb-8">
-          <span className="text-2xl">🌿</span>
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-nojunk-dark text-center">
+        <div className="flex items-center justify-center gap-2 mb-4 sm:mb-8">
+          <span className="text-xl sm:text-2xl">🌿</span>
+          <h2 className="font-serif text-xl sm:text-4xl font-bold text-nojunk-dark text-center">
             Shop by Category
           </h2>
-          <span className="text-2xl">🌿</span>
+          <span className="text-xl sm:text-2xl">🌿</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-3 gap-2.5 sm:gap-6 lg:gap-8">
           {CATEGORIES.map((cat) => (
             <CategoryCard key={cat.id} category={cat} />
           ))}
         </div>
       </section>
 
-      {/* 3. Best Sellers Section with Customer's Exact Treats */}
+      {/* 3. Best Sellers Section with Customer's Exact Treats (side-by-side on mobile) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4 sm:mb-8">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xl">🌿</span>
-              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-nojunk-dark">
+              <span className="text-lg sm:text-xl">🌿</span>
+              <h2 className="font-serif text-xl sm:text-4xl font-bold text-nojunk-dark">
                 Best Sellers & Signature Treats
               </h2>
-              <span className="text-xl">🌿</span>
+              <span className="text-lg sm:text-xl">🌿</span>
             </div>
             <p className="text-xs sm:text-sm text-nojunk-brown/85 mt-1 font-medium">
               Handmade fresh with 100% Medjool dates, wholesome nuts, and rich couverture chocolate.
@@ -58,14 +58,14 @@ export const HomePage: React.FC = () => {
 
           <Link
             to="/shop"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-nojunk-dark hover:text-nojunk-goldenBrown group bg-white px-4 py-2 rounded-full border border-amber-900/15 shadow-2xs"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-nojunk-dark hover:text-nojunk-goldenBrown group bg-white px-4 py-2 rounded-full border border-amber-900/15 shadow-2xs self-start sm:self-auto"
           >
             <span>View All Treats</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {bestSellers.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

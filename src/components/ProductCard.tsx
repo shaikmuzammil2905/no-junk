@@ -125,17 +125,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, layout = 'gri
 
   // Grid layout
   return (
-    <div className="group relative bg-[#FCF8F2] rounded-3xl p-4 sm:p-5 border-2 border-amber-900/15 shadow-sm hover:shadow-hover hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+    <div className="group relative bg-[#FCF8F2] rounded-2xl sm:rounded-3xl p-3 sm:p-5 border border-amber-900/15 sm:border-2 shadow-sm hover:shadow-hover hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
       {/* Top badges */}
-      <div className="absolute top-4 left-4 z-10 flex items-center gap-1">
+      <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 z-10 flex items-center gap-1">
         {product.isFeatured ? (
-          <span className="bg-nojunk-dark text-amber-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-amber-400/40 flex items-center gap-1 shadow-sm">
-            <Sparkles className="w-2.5 h-2.5 text-amber-300" />
+          <span className="bg-nojunk-dark text-amber-200 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full border border-amber-400/40 flex items-center gap-1 shadow-sm">
+            <Sparkles className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-amber-300" />
             <span>Crown Jewel</span>
           </span>
         ) : product.isBestSeller ? (
-          <span className="bg-amber-100 text-nojunk-goldenBrown text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-amber-300/40 flex items-center gap-0.5 shadow-2xs">
-            <Sparkles className="w-2.5 h-2.5 text-nojunk-caramel" />
+          <span className="bg-amber-100 text-nojunk-goldenBrown text-[9px] sm:text-[10px] font-bold px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full border border-amber-300/40 flex items-center gap-0.5 shadow-2xs">
+            <Sparkles className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-nojunk-caramel" />
             <span>Bestseller</span>
           </span>
         ) : null}
@@ -145,49 +145,49 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, layout = 'gri
         type="button"
         onClick={() => toggleWishlist(product.id)}
         aria-label={isFavorited ? 'Remove from wishlist' : 'Add to wishlist'}
-        className="absolute top-4 right-4 p-2.5 rounded-full bg-white/90 backdrop-blur-sm text-nojunk-brown hover:text-rose-600 transition-colors z-10 shadow-2xs"
+        className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 p-1.5 sm:p-2.5 rounded-full bg-white/90 backdrop-blur-sm text-nojunk-brown hover:text-rose-600 transition-colors z-10 shadow-2xs"
       >
-        <Heart className={`w-4 h-4 ${isFavorited ? 'fill-rose-500 text-rose-500' : ''}`} />
+        <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isFavorited ? 'fill-rose-500 text-rose-500' : ''}`} />
       </button>
 
       {/* Image container */}
       <Link
         to={`/product/${product.slug}`}
-        className="w-full aspect-square rounded-2xl overflow-hidden bg-white flex items-center justify-center p-2 mb-3.5 relative group border border-amber-900/10"
+        className="w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-white flex items-center justify-center p-1.5 sm:p-2 mb-2 sm:mb-3.5 relative group border border-amber-900/10"
       >
         <img
           src={product.images[0]}
           alt={product.name}
-          className="w-full h-full object-cover rounded-xl group-hover:scale-108 transition-transform duration-300"
+          className="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-108 transition-transform duration-300"
           loading="lazy"
         />
       </Link>
 
       {/* Content */}
-      <div className="space-y-2 flex-1 flex flex-col justify-between">
+      <div className="space-y-1 sm:space-y-2 flex-1 flex flex-col justify-between">
         <div>
-          <span className="text-[10px] font-bold uppercase tracking-wider text-nojunk-goldenBrown">
+          <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-nojunk-goldenBrown">
             {product.categoryLabel}
           </span>
           <Link to={`/product/${product.slug}`}>
-            <h3 className="font-serif text-base sm:text-lg font-bold text-nojunk-dark group-hover:text-nojunk-goldenBrown transition-colors line-clamp-1 mt-0.5">
+            <h3 className="font-serif text-xs sm:text-lg font-bold text-nojunk-dark group-hover:text-nojunk-goldenBrown transition-colors line-clamp-1 mt-0.5">
               {product.name}
             </h3>
           </Link>
-          <p className="text-xs text-nojunk-dark/75 line-clamp-2 mt-1">
+          <p className="text-[11px] sm:text-xs text-nojunk-dark/75 line-clamp-1 sm:line-clamp-2 mt-0.5 sm:mt-1 hidden xs:block">
             {product.shortDescription}
           </p>
         </div>
 
         {/* Variant chips */}
         {product.variants.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 pt-1">
-            {product.variants.map((v) => (
+          <div className="flex flex-wrap gap-1 pt-1">
+            {product.variants.slice(0, 3).map((v) => (
               <button
                 key={v.label}
                 type="button"
                 onClick={() => setSelectedVariant(v.label)}
-                className={`text-[10px] sm:text-[11px] px-2.5 py-1 rounded-lg font-medium transition-all ${
+                className={`text-[9px] sm:text-[11px] px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg font-medium transition-all ${
                   selectedVariant === v.label
                     ? 'bg-nojunk-dark text-amber-200 shadow-2xs font-bold'
                     : 'bg-amber-100/60 text-nojunk-brown hover:bg-amber-200/60'
@@ -200,35 +200,35 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, layout = 'gri
         )}
 
         {/* Pricing & Actions */}
-        <div className="pt-2.5 border-t border-amber-900/10 flex items-center justify-between gap-2">
+        <div className="pt-2 sm:pt-2.5 border-t border-amber-900/10 flex items-center justify-between gap-1 sm:gap-2">
           <div>
             {displayPrice ? (
-              <span className="text-base sm:text-lg font-bold text-nojunk-dark font-sans">
+              <span className="text-sm sm:text-lg font-bold text-nojunk-dark font-sans">
                 ₹{displayPrice}
               </span>
             ) : (
-              <span className="text-[11px] font-bold text-nojunk-goldenBrown">
+              <span className="text-[10px] sm:text-[11px] font-bold text-nojunk-goldenBrown">
                 {product.priceNote || 'Custom Sizes'}
               </span>
             )}
           </div>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1 sm:gap-1.5">
             <Link
               to={`/product/${product.slug}`}
-              className="text-xs font-bold text-nojunk-dark hover:bg-nojunk-dark hover:text-white px-3 py-1.5 rounded-xl bg-amber-100/70 border border-amber-900/15 transition-colors"
+              className="text-[10px] sm:text-xs font-bold text-nojunk-dark hover:bg-nojunk-dark hover:text-white px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl bg-amber-100/70 border border-amber-900/15 transition-colors"
             >
-              View &rarr;
+              View
             </Link>
 
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-2xs transition-transform active:scale-95"
+              className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-2xs transition-transform active:scale-95"
               title="Enquire on WhatsApp"
             >
-              <MessageCircle className="w-3.5 h-3.5" />
+              <MessageCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             </a>
           </div>
         </div>
