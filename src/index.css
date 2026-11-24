@@ -6,19 +6,38 @@
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   body {
     background-color: #F8F2E8;
     background-image: 
-      radial-gradient(circle at 50% 20%, rgba(255, 245, 230, 0.88), rgba(245, 234, 218, 0.92)),
+      radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.12), rgba(245, 230, 210, 0.18)),
       url('/assets/website-luxury-bg.png');
     background-attachment: fixed;
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
     color: #231207;
+    width: 100%;
+    max-width: 100vw;
     overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center top !important;
   }
 }
 

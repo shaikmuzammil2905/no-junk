@@ -19,7 +19,7 @@ export const HomePage: React.FC = () => {
   );
 
   return (
-    <div className="space-y-10 sm:space-y-16">
+    <div className="space-y-10 sm:space-y-16 w-full overflow-x-hidden">
       {/* 1. Grand Bright Hero Section (Using image copy 3.png) */}
       <HeroCarousel />
 

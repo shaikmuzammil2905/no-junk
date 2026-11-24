@@ -48,7 +48,7 @@ export const CategoryPage: React.FC = () => {
       {/* Category Banner with Clean Background (Zero Text Clashing) */}
       <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-500/35 bg-gradient-to-r from-[#FAF3EA] to-[#F5E7D4]">
         {isChocolate ? (
-          <div className="relative w-full aspect-[21/9] min-h-[340px] sm:min-h-[400px] flex items-center">
+          <div className="relative w-full min-h-[260px] sm:min-h-[340px] lg:min-h-[380px] flex items-center">
             {/* Clean background image with no baked-in text */}
             <img
               src="/assets/chocolate-specials-clean-bg.png"

@@ -14,7 +14,7 @@ export const HeroCarousel: React.FC = () => {
         {/* Full-bleed Grand Bright Hero Banner (Using image copy 3.png) */}
         <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-400/40 bg-gradient-to-r from-[#FAF3EA] to-[#F5E7D4]">
           {/* Main Bright Visual Image covering the whole Hero Section */}
-          <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] min-h-[420px] sm:min-h-[480px] lg:min-h-[520px] overflow-hidden">
+          <div className="relative w-full h-[450px] sm:h-[480px] lg:h-[520px] overflow-hidden">
             <img
               src="/assets/hero-grand-bright.png"
               alt="nojunk hero squirrel eating chocolate treat with assorted dates, nuts and luxury gift box"

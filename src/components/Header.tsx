@@ -88,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
 
       {/* Main Grand Header */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
+        className={`sticky top-0 z-40 w-full max-w-full overflow-hidden transition-all duration-300 ${
           isScrolled
             ? 'bg-[#FAF5EE]/95 backdrop-blur-md shadow-md border-b border-amber-900/15 py-2.5'
             : 'bg-[#FAF5EE] py-3.5 border-b border-amber-900/10'
@@ -204,7 +204,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
             <div className="flex items-center justify-around gap-2 mt-2.5">
               <Link
                 to="/"
-                className={`flex-1 py-1.5 px-3 text-center text-xs font-bold rounded-full transition-all duration-200 ${
+                className={`flex-1 py-1.5 px-2 text-center text-[11px] sm:text-xs font-bold rounded-full whitespace-nowrap transition-all duration-200 ${
                   currentTab === 'home'
                     ? 'bg-nojunk-dark text-amber-200 shadow-sm'
                     : 'bg-white text-nojunk-dark border border-amber-900/15'
@@ -214,7 +214,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
               </Link>
               <Link
                 to="/shop"
-                className={`flex-1 py-1.5 px-3 text-center text-xs font-bold rounded-full transition-all duration-200 ${
+                className={`flex-1 py-1.5 px-2 text-center text-[11px] sm:text-xs font-bold rounded-full whitespace-nowrap transition-all duration-200 ${
                   currentTab === 'shop'
                     ? 'bg-nojunk-dark text-amber-200 shadow-sm'
                     : 'bg-white text-nojunk-dark border border-amber-900/15'
@@ -224,7 +224,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
               </Link>
               <Link
                 to="/about"
-                className={`flex-1 py-1.5 px-3 text-center text-xs font-bold rounded-full transition-all duration-200 ${
+                className={`flex-1 py-1.5 px-2 text-center text-[11px] sm:text-xs font-bold rounded-full whitespace-nowrap transition-all duration-200 ${
                   currentTab === 'about'
                     ? 'bg-nojunk-dark text-amber-200 shadow-sm'
                     : 'bg-white text-nojunk-dark border border-amber-900/15'

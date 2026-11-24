@@ -41,7 +41,7 @@ export const App: React.FC = () => {
           {/* Animated Intro Splash Screen */}
           <SplashScreen />
 
-          <div className="flex flex-col min-h-screen bg-nojunk-cream text-nojunk-dark selection:bg-amber-200">
+          <div className="flex flex-col min-h-screen text-nojunk-dark selection:bg-amber-200 w-full overflow-x-hidden">
             {/* Header */}
             <Header onOpenSearch={() => setSearchModalOpen(true)} />
 
