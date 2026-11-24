@@ -70,8 +70,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
 
   return (
     <>
-      {/* Top Luxury Announcement Bar */}
-      <div className="bg-gradient-to-r from-nojunk-dark via-nojunk-chocolate to-nojunk-dark text-amber-100/95 text-xs py-2 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2 border-b border-amber-500/20 shadow-xs">
+      {/* Top Luxury Announcement Bar (Hidden on Mobile View as requested) */}
+      <div className="hidden md:flex bg-gradient-to-r from-nojunk-dark via-nojunk-chocolate to-nojunk-dark text-amber-100/95 text-xs py-2 px-4 text-center font-medium tracking-wide items-center justify-center gap-2 border-b border-amber-500/20 shadow-xs">
         <Sparkles className="w-3.5 h-3.5 text-nojunk-gold animate-pulse" />
         <span className="font-serif">Homemade with Love • 100% Pure Nuts, Dates & Chocolate • Only nuts.. nothing else!!</span>
         <span className="hidden sm:inline text-nojunk-gold">•</span>
@@ -96,13 +96,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4">
-            {/* Prominent Large Logo (as requested in image copy 12.png) */}
-            <Link to="/" className="flex items-center gap-3 sm:gap-4 group shrink-0">
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-3 border-nojunk-gold shadow-md bg-white transition-transform duration-300 group-hover:scale-105 p-0.5">
+            {/* Prominent Large Logo */}
+            <Link to="/" className="flex items-center gap-2.5 sm:gap-4 group shrink-0">
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-nojunk-gold shadow-md bg-white transition-transform duration-300 group-hover:scale-105 p-0.5 shrink-0 flex items-center justify-center">
                 <img
                   src="/assets/nojunk-badge-round.png"
                   alt="nojunk circular squirrel logo"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="flex flex-col">
