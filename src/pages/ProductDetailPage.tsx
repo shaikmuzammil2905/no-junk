@@ -61,14 +61,9 @@ export const ProductDetailPage: React.FC = () => {
 
   const isFavorited = isInWishlist(product.id);
 
-  const currentVariantObj = product.variants.find((v) => v.label === selectedVariant);
-  const unitPrice = currentVariantObj?.price ?? product.price;
-  const totalPrice = unitPrice ? unitPrice * quantity : undefined;
-
   const whatsappMessage = getProductEnquiryMessage(
     product.name,
-    `${selectedVariant} (Qty: ${quantity})`,
-    totalPrice ? `₹${totalPrice}` : product.priceNote
+    `${selectedVariant} (Quantity: ${quantity})`
   );
   const whatsappUrl = buildWhatsAppUrl(whatsappMessage);
 
@@ -190,33 +185,20 @@ export const ProductDetailPage: React.FC = () => {
             )}
           </div>
 
-          {/* Price display */}
-          <div className="bg-gradient-to-r from-amber-100/70 via-amber-50 to-amber-100/50 p-5 rounded-3xl border-2 border-amber-300/70 flex items-baseline justify-between gap-4 shadow-2xs">
+          {/* Freshness & Order Status Box (No Prices) */}
+          <div className="bg-gradient-to-r from-amber-100/70 via-amber-50 to-amber-100/50 p-4 sm:p-5 rounded-3xl border-2 border-amber-300/70 flex items-center justify-between gap-4 shadow-2xs">
             <div>
               <span className="text-xs text-nojunk-goldenBrown font-bold uppercase tracking-wider block">
-                {product.price ? 'Price' : 'Custom Options'}
+                Boutique Availability
               </span>
-              {unitPrice ? (
-                <div className="flex items-baseline gap-2">
-                  <span className="text-3xl sm:text-4xl font-extrabold text-nojunk-dark font-sans">
-                    ₹{unitPrice * quantity}
-                  </span>
-                  {quantity > 1 && (
-                    <span className="text-xs text-nojunk-brown font-semibold">
-                      (₹{unitPrice} each)
-                    </span>
-                  )}
-                </div>
-              ) : (
-                <span className="text-sm font-bold text-nojunk-dark">
-                  {product.priceNote}
-                </span>
-              )}
+              <span className="text-sm sm:text-base font-bold text-nojunk-dark">
+                Fresh Homemade Batch • Custom Orders
+              </span>
             </div>
 
             <div className="text-right">
               <span className="text-xs text-emerald-800 bg-emerald-100 px-3 py-1.5 rounded-full font-bold inline-block border border-emerald-300">
-                Fresh Batch Ready
+                Available on WhatsApp
               </span>
             </div>
           </div>
@@ -250,7 +232,6 @@ export const ProductDetailPage: React.FC = () => {
                     }`}
                   >
                     <span>{v.label}</span>
-                    {v.price && <span className="ml-1.5 opacity-90 font-bold">₹{v.price}</span>}
                   </button>
                 ))}
               </div>

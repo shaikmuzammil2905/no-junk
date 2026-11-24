@@ -137,7 +137,7 @@ export const HomePage: React.FC = () => {
               ))}
             </div>
             <p className="text-xs sm:text-sm text-nojunk-dark/85 italic leading-relaxed">
-              "The cute honey nut cups at ₹40 are the smartest return gifts ever! Parents loved them for my daughter's birthday return favors. So neat and wholesome."
+              "The cute honey nut cups are the smartest return gifts ever! Parents loved them for my daughter's birthday return favors. So neat and wholesome."
             </p>
             <div className="pt-2 border-t border-amber-900/10">
               <p className="font-serif text-sm font-bold text-nojunk-dark">Sunitha Reddy</p>

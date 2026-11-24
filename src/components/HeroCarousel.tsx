@@ -47,21 +47,11 @@ export const HeroCarousel: React.FC = () => {
               <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
                 <Link
                   to="/shop"
-                  className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-nojunk-dark px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-full font-bold text-[11px] sm:text-sm shadow-md transition-transform active:scale-95 hover:shadow-gold-glow"
+                  className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-nojunk-dark px-4 py-2 sm:px-6 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-md transition-transform active:scale-95 hover:shadow-gold-glow"
                 >
                   <span>Explore Collection</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
-
-                <a
-                  href={directWhatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20bd5a] text-white px-3 sm:px-4 sm:py-2.5 py-1.5 rounded-full font-bold text-[11px] sm:text-sm shadow-md transition-transform active:scale-95"
-                >
-                  <MessageCircle className="w-3.5 h-3.5" />
-                  <span>WhatsApp</span>
-                </a>
               </div>
             </div>
 

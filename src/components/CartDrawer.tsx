@@ -13,13 +13,9 @@ export const CartDrawer: React.FC = () => {
   const buildCartWhatsAppMessage = () => {
     let msg = `Hello NOJUNK!\n\nI have created an enquiry for the following treats from your website:\n\n`;
     items.forEach((item, idx) => {
-      msg += `${idx + 1}. ${item.product.name} (${item.variant}) x ${item.quantity}`;
-      if (item.product.price) {
-        msg += ` - approx ₹${item.product.price * item.quantity}`;
-      }
-      msg += `\n`;
+      msg += `${idx + 1}. ${item.product.name} (${item.variant}) x ${item.quantity}\n`;
     });
-    msg += `\nPlease confirm availability, packaging options, and dispatch details.\n\nThank you!`;
+    msg += `\nPlease confirm availability, pack customization options, and pricing.\n\nThank you!`;
     return msg;
   };
 
@@ -97,11 +93,6 @@ export const CartDrawer: React.FC = () => {
                   <p className="text-[11px] text-nojunk-caramel font-medium">
                     Pack: {item.variant}
                   </p>
-                  {item.product.price && (
-                    <p className="text-xs font-bold text-nojunk-dark">
-                      ₹{item.product.price}
-                    </p>
-                  )}
                 </div>
 
                 <div className="flex items-center gap-2">

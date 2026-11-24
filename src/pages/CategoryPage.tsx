@@ -144,61 +144,61 @@ export const CategoryPage: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {categoryProducts.map((product) => {
             const isFav = isInWishlist(product.id);
-            const whatsappMsg = getProductEnquiryMessage(product.name, product.selectedVariant, product.price);
+            const whatsappMsg = getProductEnquiryMessage(product.name, product.selectedVariant);
             const whatsappLink = buildWhatsAppUrl(whatsappMsg);
 
             return (
               <div
                 key={product.id}
-                className="bg-[#FCF8F2] rounded-3xl p-4 sm:p-5 border-2 border-amber-900/15 shadow-sm hover:shadow-card hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between relative group"
+                className="bg-[#FCF8F2] rounded-2xl sm:rounded-3xl p-3 sm:p-5 border border-amber-900/15 sm:border-2 shadow-sm hover:shadow-card hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between relative group hover:-translate-y-1"
               >
                 <button
                   type="button"
                   onClick={() => toggleWishlist(product.id)}
                   aria-label="Wishlist toggle"
-                  className="absolute top-4 right-4 p-2 rounded-full bg-white/90 backdrop-blur-sm text-nojunk-brown hover:text-rose-600 transition-colors shadow-2xs z-10"
+                  className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 p-1.5 sm:p-2 rounded-full bg-white/90 backdrop-blur-sm text-nojunk-brown hover:text-rose-600 transition-colors shadow-2xs z-10"
                 >
-                  <Heart className={`w-4 h-4 ${isFav ? 'fill-rose-500 text-rose-500' : ''}`} />
+                  <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isFav ? 'fill-rose-500 text-rose-500' : ''}`} />
                 </button>
 
                 <Link
                   to={`/product/${product.slug}`}
-                  className="w-full aspect-video sm:aspect-square rounded-2xl overflow-hidden bg-white mb-4 p-2 flex items-center justify-center border border-amber-900/10 group-hover:scale-[1.02] transition-transform duration-300"
+                  className="w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-white mb-2 sm:mb-4 p-1.5 sm:p-2 flex items-center justify-center border border-amber-900/10 group-hover:scale-[1.02] transition-transform duration-300"
                 >
                   <img
                     src={product.images[0]}
                     alt={product.name}
-                    className="w-full h-full object-cover rounded-xl"
+                    className="w-full h-full object-cover rounded-lg sm:rounded-xl"
                   />
                 </Link>
 
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-2">
                   <Link to={`/product/${product.slug}`}>
-                    <h3 className="font-serif text-lg font-bold text-nojunk-dark group-hover:text-nojunk-goldenBrown transition-colors line-clamp-1">
+                    <h3 className="font-serif text-xs sm:text-lg font-bold text-nojunk-dark group-hover:text-nojunk-goldenBrown transition-colors line-clamp-1">
                       {product.name}
                     </h3>
                   </Link>
 
-                  <p className="text-xs text-nojunk-dark/75 line-clamp-2">
+                  <p className="text-[11px] sm:text-xs text-nojunk-dark/75 line-clamp-1 sm:line-clamp-2 hidden xs:block">
                     {product.shortDescription}
                   </p>
 
-                  <div className="pt-3 border-t border-amber-900/10 flex items-center justify-between gap-2">
+                  <div className="pt-2 sm:pt-3 border-t border-amber-900/10 flex items-center justify-between gap-1 sm:gap-2">
                     <Link
                       to={`/product/${product.slug}`}
-                      className="inline-flex items-center gap-1.5 bg-nojunk-dark hover:bg-nojunk-chocolate text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-2xs"
+                      className="flex-1 text-center text-[10px] sm:text-xs font-bold text-nojunk-dark hover:bg-nojunk-dark hover:text-white py-1.5 px-2 rounded-lg sm:rounded-xl bg-amber-100/70 border border-amber-900/15 transition-colors truncate"
                     >
-                      <span>View Details &rarr;</span>
+                      Select Product
                     </Link>
 
                     <a
                       href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-2xs transition-transform active:scale-95"
+                      className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-2xs transition-transform active:scale-95 shrink-0"
                       title="Enquire on WhatsApp"
                     >
-                      <MessageCircle className="w-4 h-4" />
+                      <MessageCircle className="w-3.5 h-3.5" />
                     </a>
                   </div>
                 </div>

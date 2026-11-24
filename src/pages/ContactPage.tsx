@@ -94,33 +94,6 @@ export const ContactPage: React.FC = () => {
             </a>
           </div>
 
-          {/* Phone Call Card */}
-          <div className="bg-[#FDFBF7] border border-nojunk-brown/15 rounded-3xl p-6 space-y-3">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-nojunk-dark text-amber-200 flex items-center justify-center shadow-sm">
-                <Phone className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-serif text-lg font-bold text-nojunk-dark">
-                  Direct Phone Call
-                </h3>
-                <p className="text-xs text-nojunk-brown font-medium">
-                  Voice Enquiry & Orders
-                </p>
-              </div>
-            </div>
-            <p className="text-xs text-nojunk-dark/80">
-              Call us directly during business hours (9:00 AM – 9:00 PM IST).
-            </p>
-            <a
-              href={`tel:${WHATSAPP_PHONE}`}
-              className="inline-flex items-center gap-2 bg-nojunk-surface hover:bg-nojunk-parchment text-nojunk-dark border border-nojunk-brown/20 px-4 py-2.5 rounded-xl font-semibold text-xs transition-colors"
-            >
-              <Phone className="w-4 h-4 text-nojunk-caramel" />
-              <span>Call: {WHATSAPP_PHONE}</span>
-            </a>
-          </div>
-
           {/* Email Card */}
           <div className="bg-[#FDFBF7] border border-nojunk-brown/15 rounded-3xl p-6 space-y-3">
             <div className="flex items-center gap-3">

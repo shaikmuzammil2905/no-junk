@@ -131,7 +131,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/product/cute-cup-mixed-nuts-honey" className="hover:text-amber-300 transition-colors">
-                  Cute Cup Honey Nuts (₹40)
+                  Cute Cup Honey Nuts
                 </Link>
               </li>
             </ul>
@@ -153,14 +153,6 @@ export const Footer: React.FC = () => {
               >
                 <MessageCircle className="w-4 h-4 shrink-0" />
                 <span>WhatsApp: {WHATSAPP_PHONE}</span>
-              </a>
-
-              <a
-                href={`tel:${WHATSAPP_PHONE}`}
-                className="flex items-center gap-2 hover:text-amber-300 transition-colors"
-              >
-                <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Call: {WHATSAPP_PHONE}</span>
               </a>
 
               <a

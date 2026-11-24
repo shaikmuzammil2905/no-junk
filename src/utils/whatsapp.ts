@@ -17,17 +17,13 @@ export function buildWhatsAppUrl(message: string): string {
  */
 export function getProductEnquiryMessage(
   productName: string,
-  variant?: string,
-  price?: number | string
+  variant?: string
 ): string {
-  let msg = `Hello NOJUNK!\n\nI am interested in:\nProduct: ${productName}`;
+  let msg = `Hello NOJUNK!\n\nI would like to enquire about:\nProduct: ${productName}`;
   if (variant) {
     msg += `\nSelected Pack / Size: ${variant}`;
   }
-  if (price) {
-    msg += `\nIndicated Price: ${typeof price === 'number' ? `₹${price}` : price}`;
-  }
-  msg += `\n\nPlease share the available pack sizes, freshness details, and ordering procedure.\n\nThank you!`;
+  msg += `\n\nPlease share the available fresh batch details, customization options, and pricing for this order.\n\nThank you!`;
   return msg;
 }
 

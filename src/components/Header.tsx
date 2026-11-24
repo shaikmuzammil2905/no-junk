@@ -287,13 +287,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
             <MessageCircle className="w-4 h-4" />
             <span>Chat on WhatsApp</span>
           </a>
-          <a
-            href={`tel:${WHATSAPP_PHONE}`}
-            className="w-full flex items-center justify-center gap-2 bg-white hover:bg-amber-50 text-nojunk-dark border border-amber-900/20 py-2.5 px-4 rounded-xl font-semibold text-xs transition-colors"
-          >
-            <Phone className="w-4 h-4 text-nojunk-goldenBrown" />
-            <span>Call: {WHATSAPP_PHONE}</span>
-          </a>
         </div>
       </aside>
     </>

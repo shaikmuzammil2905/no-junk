@@ -124,11 +124,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                 </div>
 
                 <div className="flex items-center gap-2">
-                  {product.price && (
-                    <span className="text-sm font-bold text-nojunk-dark">
-                      ₹{product.price}
-                    </span>
-                  )}
+                  <span className="text-[11px] font-bold text-nojunk-goldenBrown bg-amber-100/60 px-2.5 py-1 rounded-full border border-amber-900/10">
+                    Enquire
+                  </span>
                   <ArrowRight className="w-4 h-4 text-nojunk-brown/40 group-hover:text-nojunk-caramel group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
