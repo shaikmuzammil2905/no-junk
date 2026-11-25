@@ -16,14 +16,13 @@ export function buildWhatsAppUrl(message: string): string {
  * Generates product-specific enquiry message
  */
 export function getProductEnquiryMessage(
-  productName: string,
-  variant?: string
+  productName: string
 ): string {
-  let msg = `Hello NOJUNK!\n\nI would like to enquire about:\nProduct: ${productName}`;
-  if (variant) {
-    msg += `\nSelected Pack / Size: ${variant}`;
+  let msg = `Hello NOJUNK!\n\nI would like to enquire and order:\nProduct: ${productName}`;
+  if (productName.toLowerCase().includes('stuffed & studded') || productName.toLowerCase().includes('chocolate medjool dates')) {
+    msg += `\n(Signature Recipe - Min order: 9 pieces)`;
   }
-  msg += `\n\nPlease share the available fresh batch details, customization options, and pricing for this order.\n\nThank you!`;
+  msg += `\n\nFor Enquiry & Orders: Please share the available fresh batch details, packaging options, and dispatch timelines.\n\nThank you!`;
   return msg;
 }
 

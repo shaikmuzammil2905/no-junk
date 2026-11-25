@@ -9,7 +9,7 @@ export const ShopPage: React.FC = () => {
   const activeCategory = searchParams.get('category') || 'all';
   const searchQuery = searchParams.get('q') || '';
   const [viewMode, setViewMode] = useState<'grid' | 'horizontal'>('grid');
-  const [sortBy, setSortBy] = useState<'default' | 'price-low' | 'price-high'>('default');
+  const [sortBy, setSortBy] = useState<'default' | 'name'>('default');
 
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
@@ -27,12 +27,12 @@ export const ShopPage: React.FC = () => {
       }
       return true;
     }).sort((a, b) => {
-      if (sortBy === 'price-low') {
-        return (a.price || 9999) - (b.price || 9999);
+      if (sortBy === 'name') {
+        return a.name.localeCompare(b.name);
       }
-      if (sortBy === 'price-high') {
-        return (b.price || 0) - (a.price || 0);
-      }
+      // Prioritize signature recipe at the very top
+      if (a.id === 'stuffed-studded-chocolate-medjool-dates') return -1;
+      if (b.id === 'stuffed-studded-chocolate-medjool-dates') return 1;
       return 0;
     });
   }, [activeCategory, searchQuery, sortBy]);
@@ -126,8 +126,7 @@ export const ShopPage: React.FC = () => {
               className="bg-white border border-nojunk-brown/20 rounded-xl px-3 py-2 text-xs text-nojunk-dark focus:outline-none focus:border-nojunk-caramel"
             >
               <option value="default">Featured Sorting</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
+              <option value="name">Alphabetical (A-Z)</option>
             </select>
           </div>
 

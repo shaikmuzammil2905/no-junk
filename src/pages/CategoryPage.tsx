@@ -39,9 +39,7 @@ export const CategoryPage: React.FC = () => {
   const isChocolate = category.id === 'chocolate-specials';
   const cleanBgImage = isChocolate
     ? '/assets/chocolate-specials-clean-bg.png'
-    : category.id === 'gift-packs'
-      ? '/assets/cat-gift-packs-real.png'
-      : '/assets/cat-loose-nuts-real.png';
+    : '/assets/cat-gift-packs-real.png';
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-10">
@@ -144,7 +142,7 @@ export const CategoryPage: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {categoryProducts.map((product) => {
             const isFav = isInWishlist(product.id);
-            const whatsappMsg = getProductEnquiryMessage(product.name, product.selectedVariant);
+            const whatsappMsg = getProductEnquiryMessage(product.name);
             const whatsappLink = buildWhatsAppUrl(whatsappMsg);
 
             return (

@@ -20,10 +20,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, layout = 'gri
 
   const isFavorited = isInWishlist(product.id);
 
-  const whatsappMessage = getProductEnquiryMessage(
-    product.name,
-    selectedVariant
-  );
+  const whatsappMessage = getProductEnquiryMessage(product.name);
   const whatsappUrl = buildWhatsAppUrl(whatsappMessage);
 
   if (layout === 'horizontal') {
@@ -62,26 +59,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, layout = 'gri
             <p className="text-xs sm:text-sm text-nojunk-dark/75 line-clamp-2 mt-1">
               {product.shortDescription}
             </p>
+            <p className="text-xs text-nojunk-goldenBrown font-medium italic mt-2">
+              For Enquiry & Orders, please WhatsApp
+            </p>
           </div>
-
-          {product.variants.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {product.variants.map((v) => (
-                <button
-                  key={v.label}
-                  type="button"
-                  onClick={() => setSelectedVariant(v.label)}
-                  className={`text-[11px] px-3 py-1 rounded-lg font-medium transition-all ${
-                    selectedVariant === v.label
-                      ? 'bg-nojunk-dark text-amber-200 shadow-2xs font-bold'
-                      : 'bg-amber-100/60 text-nojunk-brown hover:bg-amber-200/60'
-                  }`}
-                >
-                  {v.label}
-                </button>
-              ))}
-            </div>
-          )}
 
           <div className="flex items-center justify-between gap-3 pt-3 border-t border-amber-900/10">
             <span className="text-xs font-bold text-nojunk-goldenBrown">
@@ -165,27 +146,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, layout = 'gri
           <p className="text-[11px] sm:text-xs text-nojunk-dark/75 line-clamp-1 sm:line-clamp-2 mt-0.5 sm:mt-1 hidden xs:block">
             {product.shortDescription}
           </p>
+          <p className="text-[10px] sm:text-xs text-nojunk-goldenBrown font-medium italic pt-0.5">
+            For Enquiry & Orders, please WhatsApp
+          </p>
         </div>
-
-        {/* Variant chips */}
-        {product.variants.length > 0 && (
-          <div className="flex flex-wrap gap-1 pt-1">
-            {product.variants.slice(0, 3).map((v) => (
-              <button
-                key={v.label}
-                type="button"
-                onClick={() => setSelectedVariant(v.label)}
-                className={`text-[9px] sm:text-[11px] px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg font-medium transition-all ${
-                  selectedVariant === v.label
-                    ? 'bg-nojunk-dark text-amber-200 shadow-2xs font-bold'
-                    : 'bg-amber-100/60 text-nojunk-brown hover:bg-amber-200/60'
-                }`}
-              >
-                {v.label}
-              </button>
-            ))}
-          </div>
-        )}
 
         {/* Actions: Select Product & Enquire on WhatsApp (No Prices) */}
         <div className="pt-2 sm:pt-2.5 border-t border-amber-900/10 flex items-center justify-between gap-1 sm:gap-2">

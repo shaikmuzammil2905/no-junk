@@ -61,15 +61,16 @@ export const ProductDetailPage: React.FC = () => {
 
   const isFavorited = isInWishlist(product.id);
 
-  const whatsappMessage = getProductEnquiryMessage(
-    product.name,
-    `${selectedVariant} (Quantity: ${quantity})`
-  );
+  const whatsappMessage = getProductEnquiryMessage(product.name);
   const whatsappUrl = buildWhatsAppUrl(whatsappMessage);
 
-  const relatedProducts = PRODUCTS.filter((p) =>
-    product.relatedProductIds.includes(p.id)
-  );
+  const relatedProducts = PRODUCTS.filter((p) => p.id !== product.id)
+    .sort((a, b) => {
+      if (a.id === 'stuffed-studded-chocolate-medjool-dates') return -1;
+      if (b.id === 'stuffed-studded-chocolate-medjool-dates') return 1;
+      return 0;
+    })
+    .slice(0, 4);
 
   const handleShare = () => {
     if (navigator.clipboard) {
@@ -213,55 +214,21 @@ export const ProductDetailPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Pack Size / Variant Selector */}
-          {product.variants.length > 0 && (
-            <div className="space-y-2.5 pt-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-nojunk-brown block">
-                Select Pack Size / Quantity:
-              </label>
-              <div className="flex flex-wrap gap-2.5">
-                {product.variants.map((v) => (
-                  <button
-                    key={v.label}
-                    type="button"
-                    onClick={() => setSelectedVariant(v.label)}
-                    className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold transition-all ${
-                      selectedVariant === v.label
-                        ? 'bg-nojunk-dark text-amber-200 shadow-sm border border-amber-400/40'
-                        : 'bg-white border-2 border-amber-900/15 text-nojunk-dark hover:bg-amber-100/50'
-                    }`}
-                  >
-                    <span>{v.label}</span>
-                  </button>
-                ))}
-              </div>
+          {/* Order & WhatsApp Enquiry Information (No sizes / quantities mentioned) */}
+          <div className="pt-2 pb-1 space-y-2.5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-amber-100/70 border border-amber-900/15 text-xs sm:text-sm font-bold text-nojunk-dark">
+              <span>✨</span>
+              <span>For Enquiry & Orders, please WhatsApp</span>
             </div>
-          )}
-
-          {/* Quantity Selector */}
-          <div className="flex items-center gap-4 pt-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-nojunk-brown">
-              Boxes / Units:
-            </span>
-            <div className="flex items-center border-2 border-amber-900/20 rounded-2xl overflow-hidden bg-white shadow-2xs">
-              <button
-                type="button"
-                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="px-3.5 py-1.5 hover:bg-amber-100 text-nojunk-dark font-extrabold text-sm"
-              >
-                -
-              </button>
-              <span className="px-4 py-1.5 text-xs font-bold text-nojunk-dark">
-                {quantity}
-              </span>
-              <button
-                type="button"
-                onClick={() => setQuantity((q) => q + 1)}
-                className="px-3.5 py-1.5 hover:bg-amber-100 text-nojunk-dark font-extrabold text-sm"
-              >
-                +
-              </button>
-            </div>
+            {product.id === 'stuffed-studded-chocolate-medjool-dates' && (
+              <p className="text-xs sm:text-sm font-bold text-amber-900 flex items-center gap-1.5 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-200">
+                <span>⭐</span>
+                <span>Signature Recipe • Min order: from 9 pieces</span>
+              </p>
+            )}
+            <p className="text-xs text-nojunk-brown/80">
+              Custom boxes, fresh batch sizes & festive arrangements prepared to order.
+            </p>
           </div>
 
           {/* Action CTAs */}
@@ -273,7 +240,7 @@ export const ProductDetailPage: React.FC = () => {
               className="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 px-6 rounded-2xl font-bold text-sm sm:text-base shadow-lg transition-all duration-200 active:scale-98"
             >
               <MessageCircle className="w-5 h-5" />
-              <span>Enquire on WhatsApp &rarr;</span>
+              <span>Enquire & Order on WhatsApp &rarr;</span>
             </a>
 
             <button
@@ -323,19 +290,19 @@ export const ProductDetailPage: React.FC = () => {
       {/* Related Products Section */}
       {relatedProducts.length > 0 && (
         <section className="pt-10 border-t border-amber-900/20 space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-nojunk-dark">
+          <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-2">
+            <h2 className="font-serif text-xl sm:text-3xl font-bold text-nojunk-dark">
               Related Treats You May Love
             </h2>
             <Link
               to="/shop"
-              className="text-xs sm:text-sm font-bold text-nojunk-dark hover:text-nojunk-goldenBrown"
+              className="text-xs sm:text-sm font-bold text-nojunk-dark hover:text-nojunk-goldenBrown shrink-0"
             >
               Explore All Treats &rarr;
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {relatedProducts.map((relProduct) => (
               <ProductCard key={relProduct.id} product={relProduct} />
             ))}

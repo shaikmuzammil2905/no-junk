@@ -47,10 +47,6 @@ export const Footer: React.FC = () => {
 
             <div className="pt-2 flex flex-wrap gap-3">
               <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-950/80 border border-amber-700/50 text-xs text-amber-200 font-bold">
-                <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-                <span>GST Applied / In Progress</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-950/80 border border-amber-700/50 text-xs text-amber-200 font-bold">
                 <Heart className="w-3.5 h-3.5 text-rose-400" />
                 <span>Small Batch Homemade</span>
               </div>
@@ -109,11 +105,6 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <Link to="/category/loose-nuts" className="hover:text-amber-300 transition-colors">
-                  Loose Nuts
-                </Link>
-              </li>
-              <li>
                 <Link to="/category/gift-packs" className="hover:text-amber-300 transition-colors">
                   Gift Packs & Boxes
                 </Link>
@@ -126,7 +117,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link to="/product/stuffed-studded-chocolate-medjool-dates" className="hover:text-amber-300 transition-colors text-amber-300 font-bold flex items-center gap-1">
                   <Sparkles className="w-3 h-3 text-amber-400" />
-                  <span>The Crown Jewel</span>
+                  <span>Signature Recipe</span>
                 </Link>
               </li>
               <li>

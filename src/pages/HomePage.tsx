@@ -23,7 +23,7 @@ export const HomePage: React.FC = () => {
       {/* 1. Grand Bright Hero Section (Using image copy 3.png) */}
       <HeroCarousel />
 
-      {/* 2. Shop by Category (Using real images copy 5, 6, 7 side-by-side) */}
+      {/* 2. Shop by Category (Using real images side-by-side) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center gap-2 mb-4 sm:mb-8">
           <span className="text-xl sm:text-2xl">🌿</span>
@@ -33,7 +33,7 @@ export const HomePage: React.FC = () => {
           <span className="text-xl sm:text-2xl">🌿</span>
         </div>
 
-        <div className="grid grid-cols-3 gap-2.5 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 gap-3.5 sm:gap-8 max-w-3xl mx-auto">
           {CATEGORIES.map((cat) => (
             <CategoryCard key={cat.id} category={cat} />
           ))}

@@ -126,7 +126,7 @@ export const ContactPage: React.FC = () => {
               </h4>
             </div>
             <p className="text-xs text-nojunk-dark/80 leading-relaxed">
-              Homemade boutique kitchen operating from Hyderabad. Physical store address will be published upon launch. GST registration is applied and currently in progress.
+              Homemade boutique kitchen operating from Hyderabad. Fresh handcrafted treats prepared to order with love and care.
             </p>
           </div>
         </div>
